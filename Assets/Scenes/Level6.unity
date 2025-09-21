@@ -6194,7 +6194,7 @@ MonoBehaviour:
   levelFailedPanel: {fileID: 660521574}
   levelSucceededPanel: {fileID: 2132711066}
   moveCountText: {fileID: 2025709768}
-  moveCount: 10
+  moveCount: 8
   pauseGame: 0
 --- !u!114 &1538722660
 MonoBehaviour:

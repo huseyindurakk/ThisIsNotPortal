@@ -1435,7 +1435,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a5493507e4a72494d8933b4046ddbd21, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5493507e4a72494d8933b4046ddbd21, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1443,7 +1443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5493507e4a72494d8933b4046ddbd21, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13
+      value: -13.000001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5493507e4a72494d8933b4046ddbd21, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4005,7 +4005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4220575386733614, guid: 370124386399bfa4684804fbadebf0dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4220575386733614, guid: 370124386399bfa4684804fbadebf0dc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4013,7 +4013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4220575386733614, guid: 370124386399bfa4684804fbadebf0dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13
+      value: -13.000001
       objectReference: {fileID: 0}
     - target: {fileID: 4220575386733614, guid: 370124386399bfa4684804fbadebf0dc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6603,7 +6603,7 @@ MonoBehaviour:
   levelFailedPanel: {fileID: 660521574}
   levelSucceededPanel: {fileID: 2132711066}
   moveCountText: {fileID: 2025709768}
-  moveCount: 10
+  moveCount: 6
   pauseGame: 0
 --- !u!114 &1538722660
 MonoBehaviour:
