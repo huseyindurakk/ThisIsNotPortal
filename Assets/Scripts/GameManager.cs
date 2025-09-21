@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public readonly HashSet<PlayerController> frozenPlayers = new HashSet<PlayerController>();
 
     public List<PlayerController> allPlayers;
+    public AudioClip winClip;
+    public AudioClip loseClip;
+    public AudioClip moveClip;
     public GameObject levelFailedPanel;
     public GameObject levelSucceededPanel;
     public TextMeshProUGUI moveCountText;
@@ -21,12 +24,15 @@ public class GameManager : MonoBehaviour
     private Quaternion rotateDirectionThisFrame = Quaternion.identity;
 
     private PlayerInputHandler playerInputHandler;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         Instance = this;
 
         playerInputHandler = GetComponent<PlayerInputHandler>();
+        audioSource = GetComponent<AudioSource>();
+
         if (allPlayers == null) allPlayers = new List<PlayerController>();
 
         moveCountText.text = moveCount.ToString();
@@ -102,6 +108,9 @@ public class GameManager : MonoBehaviour
 
                 player.ReceiveMovementCommand(moveDirectionThisFrame);
                 player.transform.rotation = rotateDirectionThisFrame;
+
+                audioSource.clip = moveClip;
+                audioSource.Play();
             }
         }
         else
@@ -150,6 +159,8 @@ public class GameManager : MonoBehaviour
     {
         pauseGame = true;
 
+        audioSource.clip = loseClip;
+        audioSource.Play();
         levelFailedPanel.SetActive(true);
     }
 
@@ -157,6 +168,8 @@ public class GameManager : MonoBehaviour
     {
         pauseGame = true;
 
+        audioSource.clip = winClip;
+        audioSource.Play();
         levelSucceededPanel.SetActive(true);
     }
 
