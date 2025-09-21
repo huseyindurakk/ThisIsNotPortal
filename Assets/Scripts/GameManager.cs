@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
         if (allPlayers == null) allPlayers = new List<PlayerController>();
 
-        moveCountText.text = moveCount.ToString();
+        moveCountText.text = "Hamle Sayısı: " + moveCount;
     }
 
     private void Update()
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
             rotateDirectionThisFrame = Quaternion.Euler(0f, 0f, 0f);
 
             moveCount--;
-            moveCountText.text = moveCount.ToString();
+            moveCountText.text = "Hamle Sayısı: " + moveCount;
         }
         else if (playerInputHandler.Backward)
         {
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
             rotateDirectionThisFrame = Quaternion.Euler(0f, 180f, 0f);
 
             moveCount--;
-            moveCountText.text = moveCount.ToString();
+            moveCountText.text = "Hamle Sayısı: " + moveCount;
         }
         else if (playerInputHandler.Left)
         {
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
             rotateDirectionThisFrame = Quaternion.Euler(0f, 270f, 0f);
 
             moveCount--;
-            moveCountText.text = moveCount.ToString();
+            moveCountText.text = "Hamle Sayısı: " + moveCount;
         }
         else if (playerInputHandler.Right)
         {
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
             rotateDirectionThisFrame = Quaternion.Euler(0f, 90f, 0f);
 
             moveCount--;
-            moveCountText.text = moveCount.ToString();
+            moveCountText.text = "Hamle Sayısı: " + moveCount;
         }
 
         if (moveDirectionThisFrame != Vector3.zero)

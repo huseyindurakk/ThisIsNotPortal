@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask spikeLayer = 0;
 
     [Header("States")]
+    [SerializeField] private TextMeshProUGUI frozenCountText;
+    [SerializeField] private TextMeshProUGUI reversedCountText;
+    [SerializeField] private int frozenCount = 1;
+    [SerializeField] private int reversedCount = 1;
     [SerializeField] private bool isFrozen = false;
     [SerializeField] private bool isReversed = false;
 
@@ -35,6 +40,12 @@ public class PlayerController : MonoBehaviour
 
         _transform = transform;
         _collider = GetComponent<Collider>();
+
+        if (frozenCountText.text != null)
+        {
+            frozenCountText.text = reversedCount.ToString();
+            reversedCountText.text = reversedCount.ToString();
+        }
     }
 
     private void Update()
@@ -71,8 +82,24 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isRun", true);
     }
 
-    public void FreezePlayer() => isFrozen = true;
-    public void ReversePlayer() => isReversed = true;
+    public void FreezePlayer()
+    {
+        if (frozenCount > 0 && frozenCountText.text != null)
+        {
+            isFrozen = true;
+            frozenCount--;
+            frozenCountText.text = frozenCount.ToString();
+        }
+    }
+    public void ReversePlayer()
+    {
+        if (reversedCount > 0 && frozenCountText.text != null)
+        {
+            isReversed = true;
+            reversedCount--;
+            reversedCountText.text = reversedCount.ToString();
+        }
+    }
 
     public bool GetIsMoving() => isMoving || isCurrentlyTeleporting;
 
