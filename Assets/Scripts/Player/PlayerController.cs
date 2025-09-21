@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
+    [SerializeField] public Animator animator;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float gridSize = 1f;
     [SerializeField] private LayerMask obstacleLayer = ~0;
@@ -30,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+
         _transform = transform;
         _collider = GetComponent<Collider>();
     }
@@ -58,12 +61,14 @@ public class PlayerController : MonoBehaviour
         if (!CanMove(effectiveDir))
         {
             Debug.Log($"{name} cannot move, an obstacle is in the way.");
+            animator.SetBool("Obstacle", true);
             return;
         }
 
         TryStopCoroutine(ref slideCoroutine);
 
         moveCoroutine = StartCoroutine(MovePlayer(effectiveDir));
+        animator.SetBool("isRun", true);
     }
 
     public void FreezePlayer() => isFrozen = true;

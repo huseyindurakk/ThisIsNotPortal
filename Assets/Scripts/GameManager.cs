@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public bool pauseGame = false;
 
     private Vector3 moveDirectionThisFrame = Vector3.zero;
+    private Quaternion rotateDirectionThisFrame = Quaternion.identity;
 
     private PlayerInputHandler playerInputHandler;
 
@@ -48,11 +49,14 @@ public class GameManager : MonoBehaviour
         }
 
         moveDirectionThisFrame = Vector3.zero;
+        rotateDirectionThisFrame = Quaternion.identity;
 
         if (playerInputHandler.Forward)
         {
             moveDirectionThisFrame = Vector3.forward;
             playerInputHandler.Forward = false;
+
+            rotateDirectionThisFrame = Quaternion.Euler(0f, 0f, 0f);
 
             moveCount--;
             moveCountText.text = moveCount.ToString();
@@ -62,6 +66,8 @@ public class GameManager : MonoBehaviour
             moveDirectionThisFrame = Vector3.back;
             playerInputHandler.Backward = false;
 
+            rotateDirectionThisFrame = Quaternion.Euler(0f, 180f, 0f);
+
             moveCount--;
             moveCountText.text = moveCount.ToString();
         }
@@ -70,6 +76,8 @@ public class GameManager : MonoBehaviour
             moveDirectionThisFrame = Vector3.left;
             playerInputHandler.Left = false;
 
+            rotateDirectionThisFrame = Quaternion.Euler(0f, 270f, 0f);
+
             moveCount--;
             moveCountText.text = moveCount.ToString();
         }
@@ -77,6 +85,8 @@ public class GameManager : MonoBehaviour
         {
             moveDirectionThisFrame = Vector3.right;
             playerInputHandler.Right = false;
+
+            rotateDirectionThisFrame = Quaternion.Euler(0f, 90f, 0f);
 
             moveCount--;
             moveCountText.text = moveCount.ToString();
@@ -91,6 +101,18 @@ public class GameManager : MonoBehaviour
                 if (frozenPlayers.Contains(player)) continue;
 
                 player.ReceiveMovementCommand(moveDirectionThisFrame);
+                player.transform.rotation = rotateDirectionThisFrame;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < allPlayers.Count; i++)
+            {
+                var player = allPlayers[i];
+                if (player == null) continue;
+
+                player.animator.SetBool("isRun", false);
+                player.animator.SetBool("Obstacle", false);
             }
         }
     }
